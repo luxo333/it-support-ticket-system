@@ -2,6 +2,8 @@
 
 A simple IT support ticket system built with Python, Flask, SQLite, HTML, and CSS.
 
+Developed as a locally hosted IT support system, using a Python virtual environment for dependency management and testing.
+
 ## Features
 
 - Create tickets
