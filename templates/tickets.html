@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Tickets</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>All Tickets</h1>
+
+        <a href="/">Create new ticket</a>
+
+        <br><br>
+
+        {% for ticket in tickets %}
+            <div class="ticket-card">
+                <h3>{{ ticket[1] }}</h3>
+                <p>{{ ticket[2] }}</p>
+                <p>Status: <span class="status">{{ ticket[3] }}</span></p>
+                <p>Priority: <strong>{{ ticket[4] }}</strong></p>
+                <small>Ticket ID: {{ ticket[0] }}</small>
+
+                <form action="/update_status/{{ ticket[0] }}" method="POST">
+                    <select name="status">
+                        <option value="Open">Open</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Closed">Closed</option>
+                    </select>
+                    <button type="submit">Update Status</button>
+                </form>
+
+                <form action="/delete_ticket/{{ ticket[0] }}" method="POST" style="margin-top: 10px;">
+                    <button type="submit">Delete Ticket</button>
+                </form>
+
+                <p style="margin-top: 10px;">
+                    <a href="/edit_ticket/{{ ticket[0] }}">Edit Ticket</a>
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

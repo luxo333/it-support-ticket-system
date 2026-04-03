@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Ticket</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Ticket</h1>
+
+        <form method="POST">
+            <label>Title:</label>
+            <input type="text" name="title" value="{{ ticket[1] }}">
+
+            <label>Description:</label>
+            <textarea name="description">{{ ticket[2] }}</textarea>
+
+            <label>Status:</label>
+            <select name="status">
+                <option value="Open" {% if ticket[3] == 'Open' %}selected{% endif %}>Open</option>
+                <option value="In Progress" {% if ticket[3] == 'In Progress' %}selected{% endif %}>In Progress</option>
+                <option value="Closed" {% if ticket[3] == 'Closed' %}selected{% endif %}>Closed</option>
+            </select>
+
+            <label>Priority:</label>
+            <select name="priority">
+                <option value="Low" {% if ticket[4] == 'Low' %}selected{% endif %}>Low</option>
+                <option value="Medium" {% if ticket[4] == 'Medium' %}selected{% endif %}>Medium</option>
+                <option value="High" {% if ticket[4] == 'High' %}selected{% endif %}>High</option>
+            </select>
+
+            <button type="submit">Save Changes</button>
+        </form>
+
+        <br>
+        <a href="/tickets">Back to all tickets</a>
+    </div>
+</body>
+</html>

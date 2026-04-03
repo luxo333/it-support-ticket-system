@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ticket System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Submit a Ticket</h1>
+
+        <form method="POST">
+            <label>Title:</label>
+            <input type="text" name="title">
+
+            <label>Description:</label>
+            <textarea name="description"></textarea>
+
+            <label>Status:</label>
+            <select name="status">
+                <option value="Open">Open</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Closed">Closed</option>
+            </select>
+
+            <label>Priority:</label>
+            <select name="priority">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <br>
+        <a href="/tickets">View all tickets</a>
+    </div>
+</body>
+</html>
